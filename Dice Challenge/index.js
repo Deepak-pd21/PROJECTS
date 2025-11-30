@@ -1,29 +1,43 @@
+document.getElementById("startBtn").addEventListener("click", function () {
 
-var randomNumber1 = Math.floor(Math.random() * 6) + 1; //1-6
+  const resultText = document.getElementById("result");
+  const resetBtn = document.getElementById("resetBtn");
 
-var randomDiceImage = "dice" + randomNumber1 + ".png"; //dice1.png - dice6.png
+  resultText.style.display = "block";
 
-var randomImageSource = "images/" + randomDiceImage; //images/dice1.png - images/dice6.png
+  // Add animation class to images
+  const dice1 = document.querySelector(".img1");
+  const dice2 = document.querySelector(".img2");
 
-var image1 = document.querySelectorAll("img")[0];
+  dice1.classList.add("roll");
+  dice2.classList.add("roll");
 
-image1.setAttribute("src", randomImageSource);
+  // Delay before showing new dice result
+  setTimeout(() => {
+    dice1.classList.remove("roll");
+    dice2.classList.remove("roll");
 
+    // Random dice numbers
+    const randomNumber1 = Math.floor(Math.random() * 6) + 1;
+    const randomNumber2 = Math.floor(Math.random() * 6) + 1;
 
-var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+    dice1.setAttribute("src", `images/dice${randomNumber1}.png`);
+    dice2.setAttribute("src", `images/dice${randomNumber2}.png`);
 
-var randomImageSource2 = "images/dice" + randomNumber2 + ".png";
+    // Winner text
+    if (randomNumber1 > randomNumber2) {
+      resultText.innerHTML = "🚩 Player 1 Wins!";
+    } else if (randomNumber2 > randomNumber1) {
+      resultText.innerHTML = "Player 2 Wins! 🚩";
+    } else {
+      resultText.innerHTML = "😮 It's a Draw!";
+    }
 
-document.querySelectorAll("img")[1].setAttribute("src", randomImageSource2);
+    resetBtn.style.display = "inline-block";
+  }, 1200); // Animation duration same as CSS
+});
 
+document.getElementById("resetBtn").addEventListener("click", function () {
+  location.reload();
+});
 
-//If player 1 wins
-if (randomNumber1 > randomNumber2) {
-  document.querySelector("h1").innerHTML = "👑 Player 1 Wins!";
-}
-else if (randomNumber2 > randomNumber1) {
-  document.querySelector("h1").innerHTML = "Player 2 Wins! 👑";
-}
-else {
-  document.querySelector("h1").innerHTML = "Draw! 😐";
-}

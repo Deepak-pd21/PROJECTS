@@ -32,10 +32,40 @@ img {
   width: 80%;
 }
 
-footer {
-  margin-top: 5%;
-  color: #EEEEEE;
-  text-align: center;
-  font-family: 'Indie Flower', cursive;
-
+/* Dice roll animation */
+.roll {
+  animation: rolling 1.2s ease-in-out;
 }
+
+@keyframes rolling {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Buttons styling */
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  background-color: #4ECCA3;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-family: 'Indie Flower', cursive;
+  color: #232931;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+button:hover {
+  transform: scale(1.1);
+  background-color: #3fb98b;
+}
+

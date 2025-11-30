@@ -26,11 +26,11 @@ document.getElementById("startBtn").addEventListener("click", function () {
 
     // Winner text
     if (randomNumber1 > randomNumber2) {
-      resultText.innerHTML = "🚩 Player 1 Wins!";
+      resultText.innerHTML = "<span>👑</span> Player 1 Wins!";
     } else if (randomNumber2 > randomNumber1) {
-      resultText.innerHTML = "Player 2 Wins! 🚩";
+      resultText.innerHTML = "Player 2 Wins! <span>👑</span>";
     } else {
-      resultText.innerHTML = "😮 It's a Draw!";
+      resultText.innerHTML = "<span>😮</span> It's a Draw!";
     }
 
     resetBtn.style.display = "inline-block";
